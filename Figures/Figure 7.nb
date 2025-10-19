@@ -1,0 +1,1590 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     65269,       1582]
+NotebookOptionsPosition[     63282,       1541]
+NotebookOutlinePosition[     63684,       1557]
+CellTagsIndexPosition[     63641,       1554]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "166", ",", "188.2", ",", "158", ",", "129", ",", "212.9", ",", "165.9", 
+     ",", "105", ",", "160", ",", "137.9", ",", "212.96", ",", "212.96", ",", 
+     "212.96", ",", "2181.7", ",", "632.9", ",", "1522.9", ",", "825.9", ",", 
+     "700.7", ",", "668.9", ",", "1240", ",", "743", ",", "601.1", ",", 
+     "686.1", ",", "726.7", ",", "729.2", ",", "719.1", ",", "1275", ",", 
+     "1275", ",", "1275", ",", "1275", ",", "130", ",", "264", ",", "887.2", 
+     ",", "683.2", ",", "299", ",", "290", ",", "550", ",", "646"}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{"Length", "[", "data", "]"}]}], "Input",
+ CellChangeTimes->{{3.962995180922098*^9, 3.9629952075790253`*^9}, {
+   3.9629956964733925`*^9, 3.962995716771776*^9}, 3.9629958698770294`*^9, {
+   3.962996461006981*^9, 3.9629964623941402`*^9}, 3.962999968529402*^9, {
+   3.962999998755472*^9, 3.9630000049154396`*^9}, {3.9630000431809807`*^9, 
+   3.9630000458065586`*^9}, {3.9634074811174965`*^9, 3.9634075039797*^9}, {
+   3.9634076018836384`*^9, 3.9634076050399113`*^9}, {3.963409460871723*^9, 
+   3.9634094623767033`*^9}, {3.963502797527773*^9, 3.9635028180847607`*^9}},
+ CellLabel->
+  "In[723]:=",ExpressionUUID->"5136d892-257b-ab4e-ad3f-19e1a757715d"],
+
+Cell[BoxData["37"], "Output",
+ CellChangeTimes->{3.963407504291195*^9, 3.963407605811844*^9, 
+  3.963409463731291*^9, 3.963502818691931*^9, 3.9636024696609974`*^9},
+ CellLabel->
+  "Out[724]=",ExpressionUUID->"abef5fad-e848-f541-a0cc-551410e81b43"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<MaTeX`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.963003666909004*^9, 3.9630037047365303`*^9}},
+ CellLabel->
+  "In[1351]:=",ExpressionUUID->"f4ee4fa1-7a10-1349-bb1f-8c3a1015a86c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"speciesNames", "=", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Rhytidoponera aurata\>\"", ",", "\"\<Pogonomyrmex rugosus\>\"", 
+      ",", "\"\<Pogonomyrmex rugosus\>\"", ",", 
+      "\"\<Pogonomyrmex maricopa\>\"", ",", "\"\<Paraponera clavata\>\"", 
+      ",", "\"\<Pachycondyla berthoudi\>\"", ",", 
+      "\"\<Myrmecocystu mexicanus\>\"", ",", "\"\<Myrmecocystu mendax\>\"", 
+      ",", "\"\<Messor pergandei\>\"", ",", "\"\<Leptogenys schwabi\>\"", 
+      ",", "\"\<Leptogenys nitida\>\"", ",", "\"\<Leptogenys attenuata\>\"", 
+      ",", "\"\<Formica rufa\>\"", ",", "\"\<Formica polyctena\>\"", ",", 
+      "\"\<Formica fusca\>\"", ",", "\"\<Cataglyphis fortis\>\"", ",", 
+      "\"\<Cataglyphis bombycina\>\"", ",", "\"\<Cataglyphis bicolor\>\"", 
+      ",", "\"\<Cataglyphis albicans\>\"", ",", 
+      "\"\<\!\(\*StyleBox[\"Camponotus\",FontFamily->\"Latin Modern Roman \
+10\",FontWeight->\"Normal\",FontSlant->\"Italic\"]\) \
+\!\(\*StyleBox[\"sp\",FontFamily->\"Latin Modern Roman \
+10\",FontWeight->\"Normal\"]\)\>\"", ",", "\"\<Camponotus rufipes\>\"", ",", 
+      "\"\<Camponotus herculeanus\>\"", ",", "\"\<Camponotus herculeanus\>\"",
+       ",", "\"\<Atta vollenweideri\>\"", ",", 
+      "\"\<Acromyrmex octospinosus\>\""}], "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"input", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1",
+      ",", "1", ",", "1", ",", "1", ",", "1", ",", "6", ",", "1", ",", "6", 
+     ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "2", 
+     ",", "1", ",", "2", ",", "1"}], "}"}]}], ";"}], "\n", 
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"ConstantArray", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Position", "[", 
+       RowBox[{"input", ",", "j"}], "]"}], "[", 
+      RowBox[{"[", 
+       RowBox[{"1", ",", "1"}], "]"}], "]"}], ",", "j"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"j", ",", "input"}], "}"}]}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"speciesIndices", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"MapIndexed", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"ConstantArray", "[", 
+        RowBox[{
+         RowBox[{"First", "@", "#2"}], ",", "#1"}], "]"}], "&"}], ",", 
+      "input"}], "]"}], "]"}]}], "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"speciesIndices", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", 
+       "8", ",", "8", ",", "9", ",", "10", ",", "11", ",", "11", ",", "11", 
+       ",", "11", ",", "11", ",", "11", ",", "12", ",", "12", ",", "12", ",", 
+       "12", ",", "12", ",", "12", ",", "13", ",", "13", ",", "13", ",", "14",
+        ",", "14", ",", "15", ",", "16", ",", "17", ",", "18", ",", "19", ",",
+        "20", ",", "21", ",", "22", ",", "23"}], "}"}]}], ";"}], 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.9629975135965385`*^9, 3.9629975135965385`*^9}, 
+   3.9629976764071903`*^9, {3.96299825934416*^9, 3.962998275999033*^9}, {
+   3.9629998070462093`*^9, 3.9629998075615425`*^9}, {3.963003648922474*^9, 
+   3.9630036537203236`*^9}, {3.963003714343321*^9, 3.963003719362007*^9}, {
+   3.9630037542004356`*^9, 3.9630037703122463`*^9}, {3.9630038738785496`*^9, 
+   3.963003877841177*^9}, {3.9630040272551746`*^9, 3.96300404029018*^9}, 
+   3.9630492957597866`*^9, {3.963049993741066*^9, 3.9630500232044525`*^9}, {
+   3.963051037137001*^9, 3.9630510389574833`*^9}, 3.9630514717349167`*^9, {
+   3.963407706136116*^9, 3.963407711770426*^9}, {3.9634083933269196`*^9, 
+   3.9634084325743065`*^9}, {3.963408479718462*^9, 3.963408530512041*^9}, {
+   3.963408864045616*^9, 3.963408864520069*^9}, {3.96340889833395*^9, 
+   3.9634089181222916`*^9}, {3.9634095592317085`*^9, 
+   3.9634095604337997`*^9}, {3.9634095970243816`*^9, 3.9634095983416004`*^9}},
+ CellLabel->
+  "In[725]:=",ExpressionUUID->"d0ba9f89-4c0c-9b4c-bc54-bc5619e9dde6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "13", ",", "13", ",", "13", ",", "13", ",", "13"}], 
+    "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "13", ",", "13", ",", "13", ",", "13", ",", "13"}], 
+    "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"22", ",", "22"}], "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"22", ",", "22"}], "}"}], ",", 
+   RowBox[{"{", "1", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.9634085175775337`*^9, 3.9634085309493446`*^9}, 
+   3.9634088654080696`*^9, 3.963408919912594*^9, 3.9634095616506443`*^9, 
+   3.9634095997965736`*^9, 3.963411228704443*^9, 3.963502821562504*^9, 
+   3.9636024723992176`*^9},
+ CellLabel->
+  "Out[727]=",ExpressionUUID->"1df28c8e-ff26-7848-8206-21492f7155b5"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "11", ",", "12", ",", "13", ",", "13", ",", "13",
+    ",", "13", ",", "13", ",", "13", ",", "14", ",", "15", ",", "15", ",", 
+   "15", ",", "15", ",", "15", ",", "15", ",", "16", ",", "17", ",", "18", 
+   ",", "19", ",", "20", ",", "21", ",", "22", ",", "22", ",", "23", ",", 
+   "24", ",", "24", ",", "25"}], "}"}]], "Output",
+ CellChangeTimes->{{3.9634085175775337`*^9, 3.9634085309493446`*^9}, 
+   3.9634088654080696`*^9, 3.963408919912594*^9, 3.9634095616506443`*^9, 
+   3.9634095997965736`*^9, 3.963411228704443*^9, 3.963502821562504*^9, 
+   3.9636024723992176`*^9},
+ CellLabel->
+  "Out[728]=",ExpressionUUID->"11717fc0-c56a-8649-a393-73c4a00ed32c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ConstantArray", "[", 
+  RowBox[{"2", ",", "3"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9634088234581184`*^9, 3.96340883015242*^9}},
+ CellLabel->
+  "In[181]:=",ExpressionUUID->"fdb0323b-db60-4840-a8f2-aa2fe0df39bf"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2", ",", "2", ",", "2"}], "}"}]], "Output",
+ CellChangeTimes->{3.963408830447178*^9},
+ CellLabel->
+  "Out[181]=",ExpressionUUID->"1786cd96-00ad-bd40-bc52-f9b219506e41"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"speNa", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"speciesNames", "[", 
+     RowBox[{"[", "#", "]"}], "]"}], "&"}], "/@", 
+   "speciesIndices"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ourspecies", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Position", "[", 
+       RowBox[{"speNa", ",", "#"}], "]"}], "&"}], "/@", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<Cataglyphis albicans\>\"", ",", "\"\<Cataglyphis bicolor\>\"", 
+       ",", "\"\<Cataglyphis fortis\>\"", ",", 
+       "\"\<Cataglyphis bombycina\>\"", ",", "\"\<Formica polyctena\>\""}], 
+      "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rules", "=", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"ourspecies", "->", 
+     RowBox[{"ConstantArray", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+         RowBox[{"ColorData", "[", 
+          RowBox[{"\"\<FallColors\>\"", ",", "0.6"}], "]"}]}], "}"}], ",", 
+       "5"}], "]"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{"pstyle", "=", 
+  RowBox[{"ReplacePart", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"PointSize", "[", "0.025", "]"}], ",", 
+        RowBox[{"ColorData", "[", 
+         RowBox[{"\"\<FallColors\>\"", ",", "0.1"}], "]"}]}], "}"}], ",", 
+      RowBox[{"Length", "[", "speciesIndices", "]"}]}], "]"}], ",", "rules"}],
+    "]"}]}]}], "Input",
+ CellChangeTimes->{{3.9629975551213894`*^9, 3.9629975621282253`*^9}, {
+   3.962999813612547*^9, 3.962999815249243*^9}, {3.963000118794777*^9, 
+   3.9630001212414055`*^9}, {3.9630040635914726`*^9, 
+   3.9630040639912357`*^9}, {3.9630501877106*^9, 3.9630502264436493`*^9}, 
+   3.9634099353418236`*^9, {3.963410010729889*^9, 3.9634100255025616`*^9}, {
+   3.963410085548979*^9, 3.9634101978213463`*^9}, {3.96341076051668*^9, 
+   3.963410799313347*^9}, {3.9634108883271065`*^9, 3.963410930922119*^9}, {
+   3.9634109801943626`*^9, 3.9634110529432564`*^9}},
+ CellLabel->
+  "In[729]:=",ExpressionUUID->"9b810e30-30cb-3649-8cde-84ef276ae394"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Rhytidoponera aurata\"\>", ",", "\<\"Pogonomyrmex rugosus\"\>",
+    ",", "\<\"Pogonomyrmex rugosus\"\>", ",", "\<\"Pogonomyrmex maricopa\"\>",
+    ",", "\<\"Paraponera clavata\"\>", ",", "\<\"Pachycondyla berthoudi\"\>", 
+   ",", "\<\"Myrmecocystu mexicanus\"\>", ",", "\<\"Myrmecocystu mendax\"\>", 
+   ",", "\<\"Messor pergandei\"\>", ",", "\<\"Leptogenys schwabi\"\>", 
+   ",", "\<\"Leptogenys nitida\"\>", ",", "\<\"Leptogenys attenuata\"\>", 
+   ",", "\<\"Formica rufa\"\>", ",", "\<\"Formica rufa\"\>", 
+   ",", "\<\"Formica rufa\"\>", ",", "\<\"Formica rufa\"\>", 
+   ",", "\<\"Formica rufa\"\>", ",", "\<\"Formica rufa\"\>", 
+   ",", "\<\"Formica polyctena\"\>", ",", "\<\"Formica fusca\"\>", 
+   ",", "\<\"Formica fusca\"\>", ",", "\<\"Formica fusca\"\>", 
+   ",", "\<\"Formica fusca\"\>", ",", "\<\"Formica fusca\"\>", 
+   ",", "\<\"Formica fusca\"\>", ",", "\<\"Cataglyphis fortis\"\>", 
+   ",", "\<\"Cataglyphis bombycina\"\>", ",", "\<\"Cataglyphis bicolor\"\>", 
+   ",", "\<\"Cataglyphis albicans\"\>", 
+   ",", "\<\"\\!\\(\\*StyleBox[\\\"Camponotus\\\",FontFamily->\\\"Latin \
+Modern Roman 10\\\",FontWeight->\\\"Normal\\\",FontSlant->\\\"Italic\\\"]\\) \
+\\!\\(\\*StyleBox[\\\"sp\\\",FontFamily->\\\"Latin Modern Roman \
+10\\\",FontWeight->\\\"Normal\\\"]\\)\"\>", ",", "\<\"Camponotus rufipes\"\>",
+    ",", "\<\"Camponotus herculeanus\"\>", 
+   ",", "\<\"Camponotus herculeanus\"\>", 
+   ",", "\<\"Camponotus herculeanus\"\>", ",", "\<\"Atta vollenweideri\"\>", 
+   ",", "\<\"Atta vollenweideri\"\>", 
+   ",", "\<\"Acromyrmex octospinosus\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.96299756283741*^9, 3.962997681368681*^9, 3.9629982785907*^9, 
+   3.962999815817648*^9, 3.9630001216682987`*^9, 3.9630037761204567`*^9, 
+   3.9630038843084393`*^9, {3.9630040419934464`*^9, 3.9630040645526543`*^9}, 
+   3.963049299792036*^9, {3.96304999832778*^9, 3.96305002449716*^9}, {
+   3.9630501912361584`*^9, 3.963050226793211*^9}, 3.9630510404101753`*^9, 
+   3.963051474599531*^9, 3.96340898374559*^9, 3.9634096122050095`*^9, 
+   3.9634099357211514`*^9, 3.9634100264755554`*^9, 3.963410119432068*^9, 
+   3.963410164485071*^9, 3.9634102017165356`*^9, {3.963410763630514*^9, 
+   3.9634108066771564`*^9}, 3.963410931267187*^9, {3.9634109941362686`*^9, 
+   3.96341105354294*^9}, 3.96350282648481*^9, 3.9636024762838097`*^9},
+ CellLabel->
+  "Out[729]=",ExpressionUUID->"41d51e5d-6fba-154e-b977-4b9107866425"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[
+        0.6917614, 0.40925940000000005`, 0.22008260000000002`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[
+        0.6917614, 0.40925940000000005`, 0.22008260000000002`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[
+        0.6917614, 0.40925940000000005`, 0.22008260000000002`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[
+        0.6917614, 0.40925940000000005`, 0.22008260000000002`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[
+        0.6917614, 0.40925940000000005`, 0.22008260000000002`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"PointSize", "[", "0.025`", "]"}], ",", 
+     TemplateBox[<|
+      "color" -> RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]|>,
+      "RGBColorSwatchTemplate"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.96299756283741*^9, 3.962997681368681*^9, 3.9629982785907*^9, 
+   3.962999815817648*^9, 3.9630001216682987`*^9, 3.9630037761204567`*^9, 
+   3.9630038843084393`*^9, {3.9630040419934464`*^9, 3.9630040645526543`*^9}, 
+   3.963049299792036*^9, {3.96304999832778*^9, 3.96305002449716*^9}, {
+   3.9630501912361584`*^9, 3.963050226793211*^9}, 3.9630510404101753`*^9, 
+   3.963051474599531*^9, 3.96340898374559*^9, 3.9634096122050095`*^9, 
+   3.9634099357211514`*^9, 3.9634100264755554`*^9, 3.963410119432068*^9, 
+   3.963410164485071*^9, 3.9634102017165356`*^9, {3.963410763630514*^9, 
+   3.9634108066771564`*^9}, 3.963410931267187*^9, {3.9634109941362686`*^9, 
+   3.96341105354294*^9}, 3.96350282648481*^9, 3.9636024763120575`*^9},
+ CellLabel->
+  "Out[732]=",ExpressionUUID->"3abc20be-a593-8d40-a672-3423b58b4f98"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xtiks", "=", 
+   RowBox[{"DeleteDuplicates", "[", 
+    RowBox[{"Transpose", "[", 
+     RowBox[{"{", 
+      RowBox[{"speciesIndices", ",", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"Rotate", "[", 
+             RowBox[{"#", ",", 
+              RowBox[{"0", "Degree"}]}], "]"}], ",", "Italic", ",", 
+            RowBox[{"FontFamily", "->", "\"\<Latin Modern Roman 10\>\""}]}], 
+           "]"}], "&"}], ",", "speNa"}], "]"}]}], "}"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"plot", "=", 
+  RowBox[{"ListPlot", "[", 
+   RowBox[{
+    RowBox[{"MapThread", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Style", "[", 
+        RowBox[{"#1", ",", "#2"}], "]"}], "&"}], ",", 
+      RowBox[{"(*", 
+       RowBox[{"Apply", " ", "style", " ", "to", " ", "each", " ", "point"}], 
+       "*)"}], 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Transpose", "[", 
+         RowBox[{"{", 
+          RowBox[{"data", ",", "speciesIndices"}], "}"}], "]"}], ",", 
+        "pstyle"}], "}"}]}], "]"}], ",", 
+    RowBox[{"Frame", "->", "True"}], ",", 
+    RowBox[{"FrameTicks", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"xtiks", ",", "Automatic"}], "}"}], ",", "Automatic"}], 
+      "}"}]}], ",", 
+    RowBox[{"LabelStyle", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"FontFamily", "->", "\"\<Latin Modern Roman 10\>\""}], ",", 
+       "Black", ",", "15"}], "}"}]}], ",", 
+    RowBox[{"ImageSize", "->", 
+     RowBox[{"{", 
+      RowBox[{"450", ",", "450"}], "}"}]}], ",", 
+    RowBox[{"AspectRatio", "->", "1.5"}], ",", 
+    RowBox[{"FrameLabel", "->", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"None", ",", "None"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<CoT (J/(kg m))\>\"", ",", "None"}], "}"}]}], "}"}]}]}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.963000123126402*^9, 3.9630001782190056`*^9}, {
+   3.9630002472727776`*^9, 3.963000248402012*^9}, {3.9630017027412567`*^9, 
+   3.9630017348378696`*^9}, {3.9630017728197193`*^9, 
+   3.9630017765638905`*^9}, {3.96300182819853*^9, 3.963001829984356*^9}, {
+   3.963001950760599*^9, 3.9630019770300045`*^9}, {3.963002237559696*^9, 
+   3.963002258151932*^9}, {3.9630023606917076`*^9, 3.963002365768179*^9}, {
+   3.963002483811138*^9, 3.963002565108141*^9}, {3.9630027588365993`*^9, 
+   3.9630027597751904`*^9}, {3.9630028282114487`*^9, 3.9630028518619156`*^9}, 
+   3.9630029393022804`*^9, {3.963003942552902*^9, 3.9630039621027336`*^9}, {
+   3.9630502370745373`*^9, 3.963050309445053*^9}, {3.963050360326845*^9, 
+   3.963050361141468*^9}, {3.9636024894983273`*^9, 3.9636024924242325`*^9}},
+ CellLabel->
+  "In[1360]:=",ExpressionUUID->"d3ee01b1-83a0-a74c-99cb-d93c3abd7951"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   InterpretationBox[{
+     TagBox[{
+       TagBox[
+        {RGBColor[0.368417, 0.506779, 0.709798], PointSize[
+         0.012833333333333334`], AbsoluteThickness[2], 
+         PointBox[CompressedData["
+1:eJxTTMoPSmViYGBQBWIQDQYHUhwgjA/2aSDQlg7lM0DoA8lQPgeEVkiA8gUc
+zp4BgjlZUL4IhL8HZp4EhHaIgvJloDRMXgGi3iYRyldykG99HbhjHsw8FTS+
+GhpfwwHsXu6FUL6WgzEIHG+G82fNBILT01Hlz3eiyj9tRZV/3gLng6mEyVC+
+DoS2aIfy9SDuP9GEyi9ohfPB5m9tQ+WfbENVX4Hgg6k3MPsM0PiGaHwjNL4x
+hHaAxY8JhG4ogPJNIfbv7IbyzSD8yFY4H0xtKILyzSG0AoxvAaENGtH4sPCy
+dAAAtcZ6Ag==
+          "]]},
+        Annotation[#, "Charting`Private`Tag#1"]& ], {
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{166., 1.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{188.2, 2.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{158., 3.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{129., 4.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{212.9, 5.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{165.9, 6.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{105., 7.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{160., 8.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{137.9, 9.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{212.96, 10.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{212.96, 11.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{212.96, 12.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{2181.7, 13.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{632.9, 13.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{1522.9, 13.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{825.9, 13.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{700.7, 13.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{668.9, 13.}}]}, 
+        {RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`], 
+         PointSize[0.025], AbsoluteThickness[2], PointBox[{{1240., 14.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{743., 15.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{601.1, 15.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{686.1, 15.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{726.7, 15.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{729.2, 15.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{719.1, 15.}}]}, 
+        {RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`], 
+         PointSize[0.025], AbsoluteThickness[2], PointBox[{{1275., 16.}}]}, 
+        {RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`], 
+         PointSize[0.025], AbsoluteThickness[2], PointBox[{{1275., 17.}}]}, 
+        {RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`], 
+         PointSize[0.025], AbsoluteThickness[2], PointBox[{{1275., 18.}}]}, 
+        {RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`], 
+         PointSize[0.025], AbsoluteThickness[2], PointBox[{{1275., 19.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{130., 20.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{264., 21.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{887.2, 22.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{683.2, 22.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{299., 23.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{290., 24.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{550., 24.}}]}, 
+        {RGBColor[0.3169238, 0.3958158, 0.33004079999999997`], PointSize[
+         0.025], AbsoluteThickness[2], PointBox[{{646., 25.}}]}}},
+      {"WolframDynamicHighlight", <|
+       "Label" -> {"XYLabel"}, "Ball" -> {"IndicatedBall"}|>}], 
+     StyleBox[
+      DynamicBox[(Charting`HighlightActionBox["DynamicHighlight", {}, 
+        Slot["HighlightElements"], 
+        Slot["LayoutOptions"], 
+        Slot["Meta"], 
+        Charting`HighlightActionFunction["DynamicHighlight", {{
+           Annotation[{
+             Directive[
+              PointSize[0.012833333333333334`], 
+              RGBColor[0.368417, 0.506779, 0.709798], 
+              AbsoluteThickness[2]], 
+             Point[CompressedData["
+1:eJxTTMoPSmViYGBQBWIQDQYHUhwgjA/2aSDQlg7lM0DoA8lQPgeEVkiA8gUc
+zp4BgjlZUL4IhL8HZp4EhHaIgvJloDRMXgGi3iYRyldykG99HbhjHsw8FTS+
+GhpfwwHsXu6FUL6WgzEIHG+G82fNBILT01Hlz3eiyj9tRZV/3gLng6mEyVC+
+DoS2aIfy9SDuP9GEyi9ohfPB5m9tQ+WfbENVX4Hgg6k3MPsM0PiGaHwjNL4x
+hHaAxY8JhG4ogPJNIfbv7IbyzSD8yFY4H0xtKILyzSG0AoxvAaENGtH4sPCy
+dAAAtcZ6Ag==
+              "]]}, "Charting`Private`Tag#1"]}, {
+           Style[{
+             Point[{{166., 1.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{188.2, 2.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{158., 3.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{129., 4.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{212.9, 5.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{165.9, 6.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{105., 7.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{160., 8.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{137.9, 9.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{212.96, 10.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{212.96, 11.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{212.96, 12.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{2181.7, 13.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{632.9, 13.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{1522.9, 13.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{825.9, 13.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{700.7, 13.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{668.9, 13.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{1240., 14.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[
+              0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+           Style[{
+             Point[{{743., 15.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{601.1, 15.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{686.1, 15.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{726.7, 15.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{729.2, 15.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{719.1, 15.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{1275., 16.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[
+              0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+           Style[{
+             Point[{{1275., 17.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[
+              0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+           Style[{
+             Point[{{1275., 18.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[
+              0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+           Style[{
+             Point[{{1275., 19.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[
+              0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+           Style[{
+             Point[{{130., 20.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{264., 21.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{887.2, 22.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{683.2, 22.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{299., 23.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{290., 24.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{550., 24.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+           Style[{
+             Point[{{646., 25.}}]}, {
+             Directive[
+              AbsoluteThickness[2], 
+              PointSize[0.025], 
+              RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}]}}, <|
+         "HighlightElements" -> <|
+           "Label" -> {"XYLabel"}, "Ball" -> {"IndicatedBall"}|>, 
+          "LayoutOptions" -> <|
+           "PanelPlotLayout" -> <||>, "PlotRange" -> {{0, 2181.7}, {0, 25.}}, 
+            "Frame" -> {{True, True}, {True, True}}, "AxesOrigin" -> {0, 0}, 
+            "ImageSize" -> {450, 675.}, "Axes" -> {True, True}, 
+            "LabelStyle" -> {FontFamily -> "Latin Modern Roman 10", 
+              GrayLevel[0], FontSize -> 15}, "AspectRatio" -> 1.5, 
+            "DefaultStyle" -> {
+              Directive[
+               PointSize[0.012833333333333334`], 
+               RGBColor[0.368417, 0.506779, 0.709798], 
+               AbsoluteThickness[2]]}, 
+            "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+                Identity[
+                 Part[#, 1]], 
+                Identity[
+                 Part[#, 2]]}& ), 
+              "ScalingFunctions" -> {{Identity, Identity}, {
+                Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> 
+            False|>, 
+          "Meta" -> <|
+           "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+            ListPlot, "GroupHighlight" -> False|>|>]]& )[<|
+        "HighlightElements" -> <|
+          "Label" -> {"XYLabel"}, "Ball" -> {"IndicatedBall"}|>, 
+         "LayoutOptions" -> <|
+          "PanelPlotLayout" -> <||>, "PlotRange" -> {{0, 2181.7}, {0, 25.}}, 
+           "Frame" -> {{True, True}, {True, True}}, "AxesOrigin" -> {0, 0}, 
+           "ImageSize" -> {450, 675.}, "Axes" -> {True, True}, 
+           "LabelStyle" -> {FontFamily -> "Latin Modern Roman 10", 
+             GrayLevel[0], FontSize -> 15}, "AspectRatio" -> 1.5, 
+           "DefaultStyle" -> {
+             Directive[
+              PointSize[0.012833333333333334`], 
+              RGBColor[0.368417, 0.506779, 0.709798], 
+              AbsoluteThickness[2]]}, 
+           "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+               Identity[
+                Part[#, 1]], 
+               Identity[
+                Part[#, 2]]}& ), 
+             "ScalingFunctions" -> {{Identity, Identity}, {
+               Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> 
+           False|>, 
+         "Meta" -> <|
+          "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+           ListPlot, "GroupHighlight" -> False|>|>],
+       ImageSizeCache->{{4.503599627370496*^15, -4.503599627370496*^15}, {
+        4.503599627370496*^15, -4.503599627370496*^15}}],
+      Selectable->False]},
+    Annotation[{{
+       Annotation[{
+         Directive[
+          PointSize[0.012833333333333334`], 
+          RGBColor[0.368417, 0.506779, 0.709798], 
+          AbsoluteThickness[2]], 
+         Point[CompressedData["
+1:eJxTTMoPSmViYGBQBWIQDQYHUhwgjA/2aSDQlg7lM0DoA8lQPgeEVkiA8gUc
+zp4BgjlZUL4IhL8HZp4EhHaIgvJloDRMXgGi3iYRyldykG99HbhjHsw8FTS+
+GhpfwwHsXu6FUL6WgzEIHG+G82fNBILT01Hlz3eiyj9tRZV/3gLng6mEyVC+
+DoS2aIfy9SDuP9GEyi9ohfPB5m9tQ+WfbENVX4Hgg6k3MPsM0PiGaHwjNL4x
+hHaAxY8JhG4ogPJNIfbv7IbyzSD8yFY4H0xtKILyzSG0AoxvAaENGtH4sPCy
+dAAAtcZ6Ag==
+          "]]}, "Charting`Private`Tag#1"]}, {
+       Style[{
+         Point[{{166., 1.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{188.2, 2.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{158., 3.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{129., 4.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{212.9, 5.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{165.9, 6.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{105., 7.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{160., 8.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{137.9, 9.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{212.96, 10.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{212.96, 11.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{212.96, 12.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{2181.7, 13.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{632.9, 13.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{1522.9, 13.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{825.9, 13.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{700.7, 13.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{668.9, 13.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{1240., 14.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+       Style[{
+         Point[{{743., 15.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{601.1, 15.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{686.1, 15.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{726.7, 15.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{729.2, 15.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{719.1, 15.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{1275., 16.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+       Style[{
+         Point[{{1275., 17.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+       Style[{
+         Point[{{1275., 18.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+       Style[{
+         Point[{{1275., 19.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.6917614, 0.40925940000000005`, 0.22008260000000002`]]}], 
+       Style[{
+         Point[{{130., 20.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{264., 21.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{887.2, 22.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{683.2, 22.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{299., 23.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{290., 24.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{550., 24.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}], 
+       Style[{
+         Point[{{646., 25.}}]}, {
+         Directive[
+          AbsoluteThickness[2], 
+          PointSize[0.025], 
+          RGBColor[0.3169238, 0.3958158, 0.33004079999999997`]]}]}}, <|
+     "HighlightElements" -> <|
+       "Label" -> {"XYLabel"}, "Ball" -> {"IndicatedBall"}|>, 
+      "LayoutOptions" -> <|
+       "PanelPlotLayout" -> <||>, "PlotRange" -> {{0, 2181.7}, {0, 25.}}, 
+        "Frame" -> {{True, True}, {True, True}}, "AxesOrigin" -> {0, 0}, 
+        "ImageSize" -> {450, 675.}, "Axes" -> {True, True}, 
+        "LabelStyle" -> {FontFamily -> "Latin Modern Roman 10", 
+          GrayLevel[0], FontSize -> 15}, "AspectRatio" -> 1.5, "DefaultStyle" -> {
+          Directive[
+           PointSize[0.012833333333333334`], 
+           RGBColor[0.368417, 0.506779, 0.709798], 
+           AbsoluteThickness[2]]}, 
+        "HighlightLabelingFunctions" -> <|"CoordinatesToolOptions" -> ({
+            Identity[
+             Part[#, 1]], 
+            Identity[
+             Part[#, 2]]}& ), 
+          "ScalingFunctions" -> {{Identity, Identity}, {
+            Identity, Identity}}|>, "Primitives" -> {}, "GCFlag" -> False|>, 
+      "Meta" -> <|
+       "DefaultHighlight" -> {"Dynamic", None}, "Index" -> {}, "Function" -> 
+        ListPlot, "GroupHighlight" -> False|>|>, 
+     "DynamicHighlight"]], {{}, {}}},
+  AspectRatio->1.5,
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{True, True}, {True, True}},
+  FrameLabel->{{None, None}, {
+     FormBox[
+      TagBox["\"CoT (J/(kg m))\"", HoldForm], TraditionalForm], None}},
+  FrameTicks->{{{{1, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Rhytidoponera aurata\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {2, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Pogonomyrmex rugosus\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {3, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Pogonomyrmex rugosus\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {4, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Pogonomyrmex maricopa\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {5, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Paraponera clavata\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {6, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Pachycondyla berthoudi\"", BoxRotation -> 0.], Italic,
+          FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {7, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Myrmecocystu mexicanus\"", BoxRotation -> 0.], Italic,
+          FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {8, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Myrmecocystu mendax\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {9, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Messor pergandei\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {10, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Leptogenys schwabi\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {11, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Leptogenys nitida\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {12, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Leptogenys attenuata\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {13, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Formica rufa\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {14, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Formica polyctena\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {15, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Formica fusca\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {16, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Cataglyphis fortis\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {17, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Cataglyphis bombycina\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {18, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Cataglyphis bicolor\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {19, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Cataglyphis albicans\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {20, 
+       FormBox[
+        StyleBox[
+         RotationBox[
+         "\"\\!\\(\\*StyleBox[\\\"Camponotus\\\",FontFamily->\\\"Latin Modern \
+Roman 10\\\",FontWeight->\\\"Normal\\\",FontSlant->\\\"Italic\\\"]\\) \
+\\!\\(\\*StyleBox[\\\"sp\\\",FontFamily->\\\"Latin Modern Roman \
+10\\\",FontWeight->\\\"Normal\\\"]\\)\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {21, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Camponotus rufipes\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {22, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Camponotus herculeanus\"", BoxRotation -> 0.], Italic,
+          FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {23, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Camponotus herculeanus\"", BoxRotation -> 0.], Italic,
+          FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {24, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Atta vollenweideri\"", BoxRotation -> 0.], Italic, 
+         FontFamily -> "Latin Modern Roman 10", StripOnInput -> False], 
+        TraditionalForm]}, {25, 
+       FormBox[
+        StyleBox[
+         RotationBox["\"Acromyrmex octospinosus\"", BoxRotation -> 0.], 
+         Italic, FontFamily -> "Latin Modern Roman 10", StripOnInput -> 
+         False], TraditionalForm]}}, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImageSize->{450, 450},
+  LabelStyle->{FontFamily -> "Latin Modern Roman 10", 
+    GrayLevel[0], 15},
+  Method->{
+   "AxisPadding" -> Scaled[0.02], "DefaultBoundaryStyle" -> Automatic, 
+    "DefaultGraphicsInteraction" -> {
+     "Version" -> 1.2, "TrackMousePosition" -> {True, False}, 
+      "Effects" -> {
+       "Highlight" -> {"ratio" -> 2}, "HighlightPoint" -> {"ratio" -> 2}, 
+        "Droplines" -> {
+         "freeformCursorMode" -> True, 
+          "placement" -> {"x" -> "All", "y" -> "None"}}}}, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "DefaultPlotStyle" -> {
+      Directive[
+       RGBColor[0.368417, 0.506779, 0.709798], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.880722, 0.611041, 0.142051], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.560181, 0.691569, 0.194885], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.922526, 0.385626, 0.209179], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.528488, 0.470624, 0.701351], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.772079, 0.431554, 0.102387], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.363898, 0.618501, 0.782349], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[1, 0.75, 0], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.647624, 0.37816, 0.614037], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.571589, 0.586483, 0.], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.915, 0.3325, 0.2125], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.40082222609352647`, 0.5220066643438841, 0.85], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.9728288904374106, 0.621644452187053, 0.07336199581899142], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.736782672705901, 0.358, 0.5030266573755369], 
+       AbsoluteThickness[2]], 
+      Directive[
+       RGBColor[0.28026441037696703`, 0.715, 0.4292089322474965], 
+       AbsoluteThickness[2]]}, "DomainPadding" -> Scaled[0.02], 
+    "PointSizeFunction" -> "SmallPointSize", "RangePadding" -> Scaled[0.05], 
+    "OptimizePlotMarkers" -> True, "IncludeHighlighting" -> "CurrentPoint", 
+    "HighlightStyle" -> Automatic, "OptimizePlotMarkers" -> True, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        Identity[
+         Part[#, 1]], 
+        Identity[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 2181.7}, {0, 25.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.96305023797019*^9, 3.9630502520598106`*^9}, {
+   3.9630502869230614`*^9, 3.963050310216522*^9}, 3.9630503619220505`*^9, 
+   3.963051041504986*^9, 3.9630514756268654`*^9, 3.963408988450733*^9, 
+   3.963409615496567*^9, 3.96341105782777*^9, 3.9634112327668667`*^9, 
+   3.963502829777424*^9},
+ CellLabel->
+  "Out[1361]=",ExpressionUUID->"0e23d60c-8ba1-b440-b65f-730348e5b1f5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<C:\\\\Users\\\\by2475\\\\Dropbox\\\\NYU POSTDOC DRIVE\\\\Ants \
+Project\\\\Mathematica\\\\2D model\\\\Updated Figures\\\\speciesCom.pdf\>\"", 
+   ",", "plot"}], "]"}]], "Input",
+ CellChangeTimes->{{3.963050365249832*^9, 3.9630503990582256`*^9}, {
+  3.963050512416666*^9, 3.9630505213897667`*^9}},
+ CellLabel->
+  "In[1362]:=",ExpressionUUID->"87062e2f-2146-b543-87cf-e98764379701"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\by2475\\\\Dropbox\\\\NYU POSTDOC \
+DRIVE\\\\Ants Project\\\\Mathematica\\\\2D model\\\\Updated \
+Figures\\\\speciesCom.pdf\"\>"], "Output",
+ CellChangeTimes->{3.963050523306429*^9, 3.96305106672563*^9, 
+  3.9630514817600136`*^9, 3.9634110711586514`*^9, 3.9635028545392666`*^9},
+ CellLabel->
+  "Out[1362]=",ExpressionUUID->"58960ad7-8398-e74f-bb2e-66c1cfbec6eb"]
+}, Open  ]],
+
+Cell[BoxData[{"70.587", "\[IndentingNewLine]", 
+ RowBox[{"44.644", ",", " ", "32.437"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.9630517567806835`*^9, 
+  3.9630517833233852`*^9}},ExpressionUUID->"6a58f96a-7d52-c34c-9fd0-\
+b55e74576ef6"]
+},
+WindowSize->{1440, 741.75},
+WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+FrontEndVersion->"14.1 for Microsoft Windows (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"bd5942d7-e05c-bd41-bc73-99e0efec11ff"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[576, 22, 1292, 22, 66, "Input",ExpressionUUID->"5136d892-257b-ab4e-ad3f-19e1a757715d"],
+Cell[1871, 46, 247, 4, 32, "Output",ExpressionUUID->"abef5fad-e848-f541-a0cc-551410e81b43"]
+}, Open  ]],
+Cell[2133, 53, 223, 4, 28, "Input",ExpressionUUID->"f4ee4fa1-7a10-1349-bb1f-8c3a1015a86c"],
+Cell[CellGroupData[{
+Cell[2381, 61, 4007, 81, 199, "Input",ExpressionUUID->"d0ba9f89-4c0c-9b4c-bc54-bc5619e9dde6"],
+Cell[6391, 144, 1436, 39, 32, "Output",ExpressionUUID->"1df28c8e-ff26-7848-8206-21492f7155b5"],
+Cell[7830, 185, 801, 14, 32, "Output",ExpressionUUID->"11717fc0-c56a-8649-a393-73c4a00ed32c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8668, 204, 239, 5, 28, "Input",ExpressionUUID->"fdb0323b-db60-4840-a8f2-aa2fe0df39bf"],
+Cell[8910, 211, 208, 5, 32, "Output",ExpressionUUID->"1786cd96-00ad-bd40-bc52-f9b219506e41"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9155, 221, 2115, 53, 85, "Input",ExpressionUUID->"9b810e30-30cb-3649-8cde-84ef276ae394"],
+Cell[11273, 276, 2458, 38, 89, "Output",ExpressionUUID->"41d51e5d-6fba-154e-b977-4b9107866425"],
+Cell[13734, 316, 9310, 242, 108, "Output",ExpressionUUID->"3abc20be-a593-8d40-a672-3423b58b4f98"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23081, 563, 2855, 71, 66, "Input",ExpressionUUID->"d3ee01b1-83a0-a74c-99cb-d93c3abd7951"],
+Cell[25939, 636, 36201, 874, 467, "Output",ExpressionUUID->"0e23d60c-8ba1-b440-b65f-730348e5b1f5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62177, 1515, 437, 9, 28, "Input",ExpressionUUID->"87062e2f-2146-b543-87cf-e98764379701"],
+Cell[62617, 1526, 394, 6, 32, "Output",ExpressionUUID->"58960ad7-8398-e74f-bb2e-66c1cfbec6eb"]
+}, Open  ]],
+Cell[63026, 1535, 252, 4, 66, "Input",ExpressionUUID->"6a58f96a-7d52-c34c-9fd0-b55e74576ef6"]
+}
+]
+*)
+
